@@ -1,1 +1,6 @@
-console.log("Promises lab is ready!");
+import {
+  fetchProductCatalog,
+  fetchProductReviews,
+  fetchSalesReport,
+} from "./apiSimulator";
+
