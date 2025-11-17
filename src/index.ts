@@ -4,3 +4,34 @@ import {
   fetchSalesReport,
 } from "./apiSimulator";
 
+const runDashboard = () => {
+  console.log("Starting dashboard...");
+
+  fetchProductCatalog()
+    .then((products) => {
+      console.log("Product catalog:");
+      console.log(products);
+
+      const reviewPromises = products.map((product) =>
+        fetchProductReviews(product.id).then((reviews) => ({
+          product,
+          reviews,
+        }))
+        );
+        return Promise.all(reviewPromises)
+    })
+    
+    
+    .then((productsWithReviews) => {
+      console.log("Products with reviews:");
+      console.log(productsWithReviews);
+    })
+    .catch((error) => {
+      console.error("Error while fetching product catalog:", error);
+    })
+    .finally(() => {
+      console.log("Finished trying to load product catalog.\n");
+    });
+};
+
+runDashboard();
