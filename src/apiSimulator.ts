@@ -21,7 +21,7 @@ export const fetchProductReviews = (productId: number): Promise<{ productId: num
             if (success) {
             resolve([
             { productId, rating: 4.5, comment: "Great product!" },
-            { productId, rating: 4.0, comment: "Pretty good overall." },
+            { productId, rating: 4.0, comment: "Pretty good." },
             ]);
             } else {
             reject(`Failed to fetch reviews for product ID ${productId}`);
