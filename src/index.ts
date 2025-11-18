@@ -1,14 +1,14 @@
 import {
-  fetchProductCatalog,
-  fetchProductReviews,
-  fetchSalesReport,
-  NetworkError,
-  DataError,
+    fetchProductCatalog,
+    fetchProductReviews,
+    fetchSalesReport,
+    NetworkError,
+    DataError,
 } from "./apiSimulator";
 
 
 const runDashboard = () => {
-  console.log("Starting dashboard...");
+    console.log("Starting dashboard...");
 
   
     fetchProductCatalog()
@@ -18,11 +18,8 @@ const runDashboard = () => {
 
     const reviewPromises = products.map((product) =>
     fetchProductReviews(product.id)
-        .then((reviews) => ({
-        product,
-        reviews,
-        }))
-        );
+        .then((reviews) => ({product,reviews,}))
+    );
     return Promise.all(reviewPromises)
     })
     
